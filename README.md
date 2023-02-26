@@ -8,8 +8,7 @@ How to use?
   ```python 
   from Calculator.calculator import Calculator
   ```
-   
-    
+  <br/>
    
  -if you have a problem with import try adding relative path to the package into **sys.path** above
  ```python
@@ -17,13 +16,12 @@ How to use?
   sys.path.append("Calculator")
  ```
   
-  
+  <br />
   
  -on the next step create an instance of Calculator object
  ```python
  calc_ = Calculator()
  ```
-  
   
   
  *the argument can be passed during the initialization*
@@ -32,14 +30,14 @@ How to use?
  calc_ = Calculator(your_expression)
  ```
   
-  
+<br />  
   
  -to solve expression use method **.calc()** that returns float number:
  ```python
  print(calc_.calc())
  ```
   
-   
+<br />   
     
  -to load new expression use method **.load_new_expression** that returns pointer to the object in order to be able to use method **.calc()** instantly
  ```python
