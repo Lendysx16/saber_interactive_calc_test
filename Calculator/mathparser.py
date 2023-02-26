@@ -1,4 +1,5 @@
 import math_functions as mf
+from matherror import ParenthesisError, InputExpressionError
 
 
 def parse_to_postfix_annotation(exp: str) -> str:
@@ -18,11 +19,13 @@ def parse_to_postfix_annotation(exp: str) -> str:
                 j += 1
             j -= 1
             postfix_result += ' '
+        elif i not in priorities.keys():
+            raise InputExpressionError
         elif i == '(':
             stack.append(i)
         elif i == ')':
             if stack.count('(') == 0:
-                raise Exception("Problem with parenthesis")
+                raise ParenthesisError
             while stack[-1] != '(':
                 postfix_result += stack[-1] + ' '
                 stack.pop(-1)
@@ -52,17 +55,17 @@ def parse_postfix_to_float(postfix_expression: str) -> float:
             stack.append(float(i))
         elif i == '~':
             if len(stack) == 0:
-                raise Exception("Problem with expression")
+                raise InputExpressionError
             stack[-1] = -stack[-1]
         else:
             if len(stack) < 2:
-                raise Exception("Problem with expression")
+                raise InputExpressionError
             x = stack[-2]
             y = stack[-1]
             stack.pop(-1)
             stack[-1] = mf.dict_with_functions[i](x, y)
     if len(stack) > 1:
-        raise Exception("Problem with expression")
+        raise InputExpressionError
     return stack[0]
 
 
