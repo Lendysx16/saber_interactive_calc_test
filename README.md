@@ -30,10 +30,12 @@ How to use?
  ```
  -to load new expression use method **.load_new_expression** that returns pointer to the object in order to be able to use method **.calc()** instantly
  ```python
- print(calc_.load_new_expression().calc())
+ your_exp = input()
+ 
+ print(calc_.load_new_expression(your_exp).calc())
  
  # the same result
- calc_.load_new_expression()
+ calc_.load_new_expression(your_exp)
  print(calc_.calc())
  
  ```
